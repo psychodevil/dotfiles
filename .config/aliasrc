@@ -1,0 +1,22 @@
+alias ls='ls --color=auto'
+export SCRIPTS=/home/agha/.scripts
+export LOOPATH=$HOME/.locale
+export LANG=en_US.UTF-8
+export VISUAL=vim
+export EDITOR=vim
+export TERMINAL=st
+export PKG_CONFIG_PATH=/home/agha/pckgs/
+export MYBASHRC=~/.bashrc
+export XDG_CONFIG_HOME=$HOME/.config/
+export srcdir=/usr/share
+alias lynda="youtube-dl -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\" --cookies cookies.txt "
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+
+MYVIMRC=/home/agha/.vimrc
+
+alias startprinter="systemctl start org.cups.cupsd.service"
+alias yt="mpsyt"
+
+
+#location for weather
+location=Benha

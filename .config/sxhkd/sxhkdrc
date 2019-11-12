@@ -1,0 +1,44 @@
+news=newsboat
+updatenews=$HOME/.scripts/newsup
+alt + Return
+	$TERMINAL
+super + b
+	exec firefox
+super + m
+	$TERMINAL -e neomutt
+super + shift + m
+	exec ~/.scripts/mailsync
+alt + c
+	$TERMINAL -e calcurse
+super + r
+	$TERMINAL -e nnn
+XF86HomePage
+	exec firefox
+super + n
+	$TERMINAL -e '$news'
+super + shift + n
+	exec '$updatenews'
+super + shift + l
+	exec xscreensaver-command -lock
+alt + p
+	exec dmenu_run
+super + p
+	exec scrot '%y%m%d%H%M%S_$wx$h.png' -e 'mv $f ~/shots/'
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+XF86Calculator
+	$TERMINAL -e calc
+
+# Media Keys
+XF86AudioMute
+	exec amixer sset 'Master' toggle
+XF86AudioLowerVolume
+	exec amixer sset 'Master' 1%-
+shift + XF86AudioLowerVolume
+	exec amixer sset 'Master' 10%-
+XF86AudioRaiseVolume
+	exec amixer sset 'Master' 1%+
+shift + XF86AudioRaiseVolume
+	exec amixer sset 'Master' 10%+
