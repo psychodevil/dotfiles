@@ -19,8 +19,8 @@ video/mp4=mplayer.desktop
 application/ogg=mplayer.desktop
 application/vnd.stardivision.mail=userapp-neomutt-UQCF1Z.desktop
 video/mpeg=mplayer.desktop
-image.jpeg=sxiv.desktop
 image/jpeg=sxiv.desktop
+image/png=sxiv.desktop
 application/pdf=pdf.desktop
 inode/directory=nnn.desktop
 
