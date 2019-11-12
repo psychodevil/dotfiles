@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=File Browser
+Exec=/usr/bin/nnn %u
