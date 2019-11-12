@@ -1,0 +1,18 @@
+#!/bin/sh
+while read file
+do
+	case "$1" in
+	"C-d")
+		cp "$file" ~/.trash  ;;
+	"C-r")
+		convert -rotate 90 "$file" "$file" ;;
+	"C-c")
+		echo -n "$file" | xclip -selection clipboard ;;
+	"C-m")
+		cp "$file" ~/myphotos ;;
+	"w")
+		convert "$file" ~/.config/wall.png &&
+		feh --bg-scale "$HOME/.config/wall.png" &&
+		notify-send -i "$HOME/.config/wall.png" "Wallpaper Changed Successfully" ;;
+	esac
+done
