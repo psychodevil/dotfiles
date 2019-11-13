@@ -12,6 +12,8 @@ export srcdir=/usr/share
 alias lynda="youtube-dl -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\" --cookies cookies.txt "
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias ccommit='config commit --all -m'
+alias netping='ping 1.1.1.1'
+alias reload='pkill -USR1 -x'
 
 MYVIMRC=/home/agha/.vimrc
 
