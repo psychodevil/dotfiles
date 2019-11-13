@@ -42,3 +42,7 @@ XF86AudioRaiseVolume
 	exec amixer sset 'Master' 1%+
 shift + XF86AudioRaiseVolume
 	exec amixer sset 'Master' 10%+
+super + shift + r
+	reboot
+super + shift + p
+	shurdown -h now

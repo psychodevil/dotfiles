@@ -11,6 +11,7 @@ export XDG_CONFIG_HOME=$HOME/.config/
 export srcdir=/usr/share
 alias lynda="youtube-dl -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\" --cookies cookies.txt "
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias ccommit='config --all -m'
 
 MYVIMRC=/home/agha/.vimrc
 
