@@ -43,6 +43,6 @@ XF86AudioRaiseVolume
 shift + XF86AudioRaiseVolume
 	exec amixer sset 'Master' 10%+
 super + shift + r
-	reboot
+	exec prompt "Are you sure you want to reboot?"  "reboot"
 super + shift + p
-	shurdown -h now
+	exec prompt "Are you sure you want to shutdown?"  "shutdown -h now"
