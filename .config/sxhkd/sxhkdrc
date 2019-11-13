@@ -1,5 +1,6 @@
 news=newsboat
 updatenews=$HOME/.scripts/newsup
+exprompt=$HOME/.scripts/prompt
 alt + Return
 	$TERMINAL
 super + b
@@ -43,6 +44,6 @@ XF86AudioRaiseVolume
 shift + XF86AudioRaiseVolume
 	exec amixer sset 'Master' 10%+
 super + shift + r
-	exec prompt "Are you sure you want to reboot?"  "reboot"
+	exec $HOME/.scripts/prompt "Are you sure you want to reboot?"  "reboot"
 super + shift + p
-	exec prompt "Are you sure you want to shutdown?"  "shutdown -h now"
+	exec $HOME/.scripts/prompt "Are you sure you want to shutdown?"  "shutdown -h now"
