@@ -4,7 +4,7 @@ exprompt=$HOME/.scripts/prompt
 alt + Return
 	$TERMINAL
 super + b
-	exec firefox
+	exec tabbed surf -pe
 super + m
 	$TERMINAL -e neomutt
 super + shift + m
@@ -14,9 +14,11 @@ alt + c
 super + r
 	$TERMINAL -e nnn
 XF86HomePage
-	exec firefox
+	exec tabbed surf -pe
 super + n
 	$TERMINAL -e '$news'
+super + l
+	libreoffice
 super + shift + n
 	exec '$updatenews'
 super + shift + l

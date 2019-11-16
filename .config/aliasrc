@@ -14,6 +14,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias ccommit='config commit --all -m'
 alias netping='ping 1.1.1.1'
 alias reload='pkill -USR1 -x'
+alias weather='curl -s "wttr.in/Benha" > "$HOME/.local/share/weatherreport"'
 
 MYVIMRC=/home/agha/.vimrc
 
