@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for file in $(ls *.png); do
+convert -compress jpeg $file ${file%.*}.jpg
+done

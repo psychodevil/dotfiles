@@ -21,6 +21,7 @@ MYVIMRC=/home/agha/.vimrc
 alias startprinter="systemctl start org.cups.cupsd.service"
 alias yt="mpsyt"
 
-
+se() {vim "$(du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf --layout=reverse --height=40%)"}
+vf() { fzf | xargs -r -I % $EDITOR % ;}
 #location for weather
 location=Benha

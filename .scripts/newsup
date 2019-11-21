@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+# Sync newboat
+
+# Checks for internet connection and set notification script.
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+export DISPLAY=:0.0
+
+echo " 🔃" > /tmp/newsupdate 
+pkill -SIGRTMIN+6 i3blocks
+
+# Run mbsync. You can feed this script different settings.
+newsboat -x "reload"
+rm -f /tmp/newsupdate
+pkill -SIGRTMIN+6 i3blocks
+
+# Notify-send of the number of feed left to read
+newsboat -x "print-unread" | xargs -I {} notify-send "{}"

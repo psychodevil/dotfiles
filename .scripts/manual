@@ -1,0 +1,4 @@
+#!/bin/sh
+
+manual_entry="$(man -k '' | dmenu -l 14 -p 'What manual do you want?' | awk -F '-' '{print $1}' | sed 's/ //g')"
+[[ $manual_entry != "" ]] && man -Tpdf "$(echo $manual_entry)" | zathura -;

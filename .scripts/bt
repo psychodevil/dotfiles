@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+battery_variable=$(acpi | sed 's/Battery 0: //
+	s/until charged//
+	s/,//g
+	s/  / /g')
+echo $battery_variable
+
+numerical_value=$(echo $battery_variable | awk '{print $2}' | sed 's/\%//')
+echo $numerical_value

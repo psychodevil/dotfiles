@@ -2,9 +2,11 @@ news=newsboat
 updatenews=$HOME/.scripts/newsup
 exprompt=$HOME/.scripts/prompt
 alt + Return
-	$TERMINAL
+	tabbed -c -n "st-tabbed" -r 2 $TERMINAL -w ""
 super + b
-	exec tabbed surf -pe
+	exec tabbed -c -n "surf-tabbed" surf -pe
+XF86HomePage
+	exec tabbed -c -n "surf-tabbed" surf -pe
 super + m
 	$TERMINAL -e neomutt
 super + shift + m
@@ -13,8 +15,6 @@ alt + c
 	$TERMINAL -e calcurse
 super + r
 	$TERMINAL -e nnn
-XF86HomePage
-	exec tabbed surf -pe
 super + n
 	$TERMINAL -e '$news'
 super + l
@@ -27,6 +27,8 @@ alt + p
 	exec dmenu_run
 super + s
 	exec scrot '%y%m%d%H%M%S_$wx$h.png' -e 'mv $f ~/shots/'
+alt + s 
+	exec ~/.scripts/scriptrunner
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -35,6 +37,10 @@ XF86Calculator
 	$TERMINAL -e calc
 super + p
 	passmenu
+
+# Copy and paste
+super + c
+	xclip -o > /dev/null
 
 # Media Keys
 XF86AudioMute

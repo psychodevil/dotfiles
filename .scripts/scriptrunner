@@ -1,0 +1,6 @@
+#!/bin/sh
+
+PATH="$HOME/.scripts:$PATH"
+
+script_entry="$(du ~/.scripts/* | awk -F '/' '{print $NF}' | dmenu -l 14 -p 'Which script to run?')"
+[[ $script_entry != "" ]] && exec $script_entry 
