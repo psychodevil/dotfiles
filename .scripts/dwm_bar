@@ -15,7 +15,7 @@ delim="|"
 testweather() { \
 	[ "$(stat -c %y "$HOME/.local/share/weatherreport" 2>/dev/null | cut -d' ' -f1)" != "$(date '+%Y-%m-%d')" ] &&
 		ping -q -c 1 1.1.1.1 >/dev/null &&
-		curl -s "wttr.in/$location" > "$HOME/.local/share/weatherreport" &&
+		curl -s "wttr.in/Benha" > "$HOME/.local/share/weatherreport" &&
 		notify-send "🌞 Weather" "New weather forecast for today." 
 		# && refbar
 		}
@@ -54,16 +54,28 @@ status() { \
 		echo "$delim"
 
 	# Will show all batteries with approximate icon for remaining power.
-	for x in /sys/class/power_supply/BAT?/capacity;
-	do
-	case "$(cat $x)" in
+
+	battery_variable=$(acpi | sed 's/Battery 0: //
+		s/until charged//
+		s/,//g
+		s/  / /g')
+
+	numerical_value=$(echo $battery_variable | awk '{print $2}' | sed 's/\%//')
+	battery_state=$(echo $battery_variable | awk '{print $1}')
+
+	case "$(echo $battery_state)" in
+		"Discharging" 	)	echo "💫" ;;
+		"Charging"	)	echo "⚡" ;;
+		"Full"		)	echo "" ;;
+	esac
+	
+	case "$(echo $numerical_value)" in
 		100|9[0-9])	echo "" ;;
 		8[0-9]|7[0-9])	echo "" ;;
 		6[0-9]|5[0-9])	echo "" ;;
 		4[0-9]|3[0-9])	echo "" ;;
 		*)		echo "" ;;
-	esac
-	done && echo "$delim"
+	esac && echo "$delim"
 
 	# Date and time.
 	date +'%a %d-%b-%Y %H:%M'
@@ -91,6 +103,6 @@ while :; do
 	# again. We run sleep in the background and use wait until it finishes,
     # because traps can interrupt wait immediately, but they can't do that
     # with sleep.
-	sleep 1m &
+	sleep 10s &
     wait
 done

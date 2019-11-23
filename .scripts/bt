@@ -7,4 +7,10 @@ battery_variable=$(acpi | sed 's/Battery 0: //
 echo $battery_variable
 
 numerical_value=$(echo $battery_variable | awk '{print $2}' | sed 's/\%//')
-echo $numerical_value
+battery_state=$(echo $battery_variable | awk '{print $1}')
+
+case "$(echo $battery_state)" in
+	"Discharging" 	)	echo "💫" ;;
+	"Charging"	)	echo "⚡" ;;
+	"Full"		)	echo "" ;;
+esac

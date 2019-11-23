@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if [[ $1 == *"vk.com"* ]]
+then
+	youtube-dl -u "+201099287330" -p "$(pass vk.com | head -n 1)" --cookies /home/agha/.local/share/cookies.txt --list-formats "$1" | sed '/\[.*\]/d' | tail -n +2 | dmenu -i -l 14 -p "Pick Resolution" | awk '{print $1}' | xargs -I %  mpv --ytdl-raw-options=username="+201099287330",password="$(pass vk.com | head -n 1)" --ytdl-format=% --cookies $HOME/.local/share/cookies.txt "$1"
+
+else
+	youtube-dl --list-formats $1 | sed '/\[.*\]/d' | tail -n +2 | dmenu -i -l 14 -p "Pick Resolution" | awk '{print $1}' | xargs -I % mpv --ytdl-format=% $1
+fi
