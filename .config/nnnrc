@@ -3,7 +3,7 @@ export NNN_USE_EDITOR=1
 export NNN_SSHFS_OPTS="sshfs -o follow_symlinks"
 export NNN_CONTEXT_COLORS="2136"
 # export NNN_TRASH=1
-alias ncp="cat ${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection | tr '\0' '\n'"
+alias ncp="cat ${XDG_CONFIG_HOME:-$HOME/.config}nnn/.selection | tr '\0' '\n'"
 export NNN_PLUG='o:fzy-open;p:mocplay;d:ndiff;m:nmount;n:notes;v:viuimg;t:thumb;z:thumb'
 
 [ -n "$NNNLVL" ] && PS1="N$NNNLVL $PS1"
@@ -23,3 +23,13 @@ n()
 		rm $NNN_TMPFILE
 	fi
 }
+
+# Make a binding to open nnn file manager using zsh (ctrl+o)
+_n_bind()
+{
+	BUFFER="n"
+	zle accept-line
+}
+
+zle -N  _n_bind
+bindkey '' _n_bind

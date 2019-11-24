@@ -68,6 +68,11 @@ status() { \
 		"Charging"	)	echo "⚡" ;;
 		"Full"		)	echo "" ;;
 	esac
+
+	if [[ $numerical_value < 30 ]] && [[ $battery_state == "Discharging" ]]; then
+		notify-send " Please plug your laptop ASAP"
+	fi
+
 	
 	case "$(echo $numerical_value)" in
 		100|9[0-9])	echo "" ;;

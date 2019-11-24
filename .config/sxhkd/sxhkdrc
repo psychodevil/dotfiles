@@ -29,6 +29,8 @@ super + s
 	exec scrot '%y%m%d%H%M%S_$wx$h.png' -e 'mv $f ~/shots/'
 alt + s 
 	exec ~/.scripts/scriptrunner
+super + shift + v
+	exec ~/.scripts/videoplayer "$(xclip -o)"
 
 # make sxhkd reload its configuration files:
 super + Escape
