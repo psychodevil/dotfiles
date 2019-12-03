@@ -15,6 +15,8 @@ alias ccommit='config commit --all -m'
 alias netping='ping 1.1.1.1'
 alias reload='pkill -USR1 -x'
 alias weather='curl -s "wttr.in/Benha" > "$HOME/.local/share/weatherreport"'
+alias freebsd='ssh 192.168.1.145'
+alias cfreebsd='scp $1 agha@192.168.1.145:$2'
 
 MYVIMRC=/home/agha/.vimrc
 

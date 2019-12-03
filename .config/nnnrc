@@ -2,6 +2,7 @@ export NNN_BMS='d:~/Documents;u:/home/agha/myphotos/;D:~/Downloads/'
 export NNN_USE_EDITOR=1
 export NNN_SSHFS_OPTS="sshfs -o follow_symlinks"
 export NNN_CONTEXT_COLORS="2136"
+export NNN_COPIER="$HOME/.config/nnn/copier.sh"
 # export NNN_TRASH=1
 alias ncp="cat ${XDG_CONFIG_HOME:-$HOME/.config}nnn/.selection | tr '\0' '\n'"
 export NNN_PLUG='o:fzy-open;p:mocplay;d:ndiff;m:nmount;n:notes;v:viuimg;t:thumb;z:thumb'
