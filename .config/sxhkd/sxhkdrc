@@ -3,24 +3,12 @@ updatenews=$HOME/.scripts/newsup
 exprompt=$HOME/.scripts/prompt
 alt + Return
 	tabbed -c -n "st-tabbed" -r 2 $TERMINAL -w ""
-super + b
-	exec tabbed -c -n "surf-tabbed" surf -pe
-XF86HomePage
-	exec tabbed -c -n "surf-tabbed" surf -pe
 super + m
 	$TERMINAL -e neomutt
 super + shift + m
-	exec ~/.scripts/mailsync
-alt + c
-	$TERMINAL -e calcurse
-super + r
-	$TERMINAL -e nnn
-super + n
-	$TERMINAL -e '$news'
-super + l
-	libreoffice
+	exec mailsync
 super + shift + n
-	exec '$updatenews'
+	exec newsup
 super + shift + l
 	exec xscreensaver-command -lock
 alt + p
@@ -35,14 +23,25 @@ super + shift + v
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# Utilities
 XF86Calculator
 	$TERMINAL -e calc
 super + p
 	passmenu
-
-# Copy and paste
 super + c
-	xclip -o > /dev/null
+	$TERMINAL -e calcurse
+super + r
+	$TERMINAL -e nnn
+super + n
+	$TERMINAL -e newsboat
+super + l
+	libreoffice
+super + b
+	exec tabbed -c -n "surf-tabbed" surf -pe
+XF86HomePage
+	exec tabbed -c -n "surf-tabbed" surf -pe
+
 
 # Media Keys
 XF86AudioMute

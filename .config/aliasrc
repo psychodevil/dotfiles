@@ -9,6 +9,7 @@ export PKG_CONFIG_PATH=/home/agha/pckgs/
 export MYBASHRC=~/.bashrc
 export XDG_CONFIG_HOME=$HOME/.config/
 export srcdir=/usr/share
+export TASKDDATA=/var/lib/taskd
 alias lynda="youtube-dl -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\" --cookies cookies.txt "
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias ccommit='config commit --all -m'
@@ -16,7 +17,7 @@ alias netping='ping 1.1.1.1'
 alias reload='pkill -USR1 -x'
 alias weather='curl -s "wttr.in/Benha" > "$HOME/.local/share/weatherreport"'
 alias freebsd='ssh 192.168.1.145'
-alias cfreebsd='scp $1 agha@192.168.1.145:$2'
+alias zapdf='xembed -e zathura'
 
 MYVIMRC=/home/agha/.vimrc
 

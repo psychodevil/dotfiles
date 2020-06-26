@@ -34,7 +34,7 @@ status() { \
 	# it look like how I want it for the status bar.
 	[ "$(stat -c %y "$HOME/.local/share/weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] &&
 		sed '16q;d' "$HOME/.local/share/weatherreport" | grep -wo "[0-9]*%" | sort -n | sed -e '$!d' | sed -e "s/^/ /g" | tr -d '\n' &&
-		sed '13q;d' "$HOME/.local/share/weatherreport" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print " ",$1 "°","",$2 "°"}' &&
+            sed '13q;d' "$HOME/.local/share/weatherreport" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print " ",$1 "°","",$2 "°"}' &&
 		echo "$delim"
 
 	# Get the volume of ALSA's master volume output.  Show an icon if or
@@ -50,7 +50,8 @@ status() { \
 	# Show unread mail if mutt-wizard is installed.
 	command -v mw >/dev/null 2>&1 &&
 		echo "$delim" &&
-		du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | wc -l | sed 's/^/ /'
+		du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | wc -l | sed 's/^/ /' 
+            [ -f /tmp/imapsyncicon_$USER ] && echo "$(cat /tmp/imapsyncicon_$USER)"
 		echo "$delim"
 
 	# Will show all batteries with approximate icon for remaining power.
@@ -83,7 +84,10 @@ status() { \
 	esac && echo "$delim"
 
 	# Date and time.
-	date +'%a %d-%b-%Y %H:%M'
+	date +'%a %d-%b-%Y %H:%M' && echo "$delim"
+
+    xkblayout | cut -c 1-2
+
 	}
 
 update() { \
@@ -108,6 +112,6 @@ while :; do
 	# again. We run sleep in the background and use wait until it finishes,
     # because traps can interrupt wait immediately, but they can't do that
     # with sleep.
-	sleep 10s &
+	sleep 1s &
     wait
 done

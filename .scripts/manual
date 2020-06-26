@@ -1,4 +1,21 @@
 #!/bin/sh
 
 manual_entry="$(man -k '' | dmenu -l 14 -p 'What manual do you want?' | awk -F '-' '{print $1}' | sed 's/ //g')"
-[[ $manual_entry != "" ]] && man -Tpdf "$(echo $manual_entry)" | zathura -;
+
+XIDFILE=/tmp/tabbedmanzathura.xid
+PIDFILE=/tmp/tabbedmanzathura.pid
+TABBEDNAME=manualtabbedpdf
+TABBEDPID=$( cat  $PIDFILE 2>/dev/null )
+ISRUNNING=$(echo -n $TABBEDPID | xargs -I %  ps --pid=% | grep tabbed)
+
+if [[ -n $ISRUNNING ]] && [[ -a $XIDFILE ]]; then
+    # append process
+    [[ $manual_entry != "" ]] && man -Tpdf "$(echo $manual_entry)" | zathura -e $(< $XIDFILE ) - &
+else
+    #spawn new process
+    tabbed -c -n "$TABBEDNAME" -d >$XIDFILE
+    TABBEDPID=$(ps aux | grep $TABBEDNAME | head -n 1 | awk '{print $2}')
+    echo $TABBEDPID > $PIDFILE
+    [[ $manual_entry != "" ]] && man -Tpdf "$(echo $manual_entry)" | zathura -e $(< $XIDFILE ) - &
+fi
+

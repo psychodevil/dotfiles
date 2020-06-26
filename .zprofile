@@ -11,4 +11,4 @@ fi
 # MPD daemon start (if no other user instance exists)
 bar=$HOME/.scripts/dwm_bar
 
-setxkbmap -layout us,ara -option grp:shifts_toggle
+setxkbmap -layout "us,ara" -option grp:menu_toggle

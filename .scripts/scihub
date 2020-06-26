@@ -1,4 +1,0 @@
-#!/bin/bash
-
-curl $(for header in "${hub[@]}"; do echo -n "-H $header"; done) $1 | grep \<iframe
-

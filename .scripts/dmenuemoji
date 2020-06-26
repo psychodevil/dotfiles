@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
 emo="$(grep -v '#' -h ~/.config/emoji ~/.config/fontawesome | dmenu -i -l 20 -fn Monosspace-14 | sed 's/ .*//' | tr -d '[:space:]' )"
-echo "$emo" | xclip -selection clipboard
+echo -n "$emo" | xclip -selection clipboard
 notify-send "'$emo' copied to clipboard"
